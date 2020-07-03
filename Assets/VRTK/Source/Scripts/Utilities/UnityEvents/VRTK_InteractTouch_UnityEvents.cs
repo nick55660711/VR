@@ -45,22 +45,48 @@
 
             if (e.target.name == "Cube" )
             {
+                GameObject.Find("RawImage").GetComponent<RawImage>().enabled = true;
                 e.target.GetComponent<Rigidbody>().AddForce(400, 400, 400);
                 GameObject.Find("TextUI").GetComponent<Text>().text = "Fly Box";
+                GameObject.Find("RawImage").GetComponent<RawImage>().texture = Miyamoto;
             } 
             
-            if (e.target.name == "Door" )
+            else if (e.target.name == "Door" )
             {
+                GameObject.Find("RawImage").GetComponent<RawImage>().enabled = true;
                 GameObject.Find("TextUI").GetComponent<Text>().text = "Door can open";
+                GameObject.Find("RawImage").GetComponent<RawImage>().texture = Miyabi;
                 e.target.GetComponentInParent<OpenDoor>().trigger();
+
+
             }
+            
+            else
+            {
+                GameObject.Find("RawImage").GetComponent<RawImage>().enabled = false;
+                //GameObject.Find("RawImage").GetComponent<RawImage>().texture = Nozomi;
+
+            }
+            
+                /*
                 CancelInvoke();
                 Invoke("clean",3);
-
+                */
         }
 
-        private void clean()
+        
+
+
+
+
+        public Texture Miyabi;
+        public Texture Nozomi;
+        public Texture Miyamoto;
+
+
+        public void clean()
         {
+            GameObject.Find("RawImage").GetComponent<RawImage>().enabled = false;
             GameObject.Find("TextUI").GetComponent<Text>().text = "";
         }
 
